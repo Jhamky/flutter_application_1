@@ -9,10 +9,10 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('hola hojos mios'),
+        title: const Text('Appbar'),
       ),
       body: const Center(
-        child: Text("como estan todos"),
+        child: Text('hola'),
       ),
     );
   }
