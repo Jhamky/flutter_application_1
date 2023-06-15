@@ -1,16 +1,17 @@
-import 'package:flutter_application_1/domain/entities/entities_lugares.dart';
+import 'package:flutter_application_1/domain/entities/dirreciones.dart';
 
 class DirrecionesMapper {
-  static Dirrecionesdb dirreciondb(Dirrecionesdb dirrecionesdb) =>
-      Dirrecionesdb(
-          id: dirrecionesdb.id,
-          idEstado: dirrecionesdb.idEstado,
-          estado: dirrecionesdb.estado,
-          idMunicipio: dirrecionesdb.idMunicipio,
-          municipio: dirrecionesdb.municipio,
-          ciudad: dirrecionesdb.ciudad,
-          zona: dirrecionesdb.zona,
-          cp: dirrecionesdb.cp,
-          asentamiento: dirrecionesdb.asentamiento,
-          tipo: dirrecionesdb.tipo);
+  static Welcome dirreciondbToEntie(Welcome welcome) =>
+      Welcome(
+          id: welcome.id,
+          idEstado: welcome.idEstado,
+          estado: welcome.estado,
+          idMunicipio: welcome.idMunicipio,
+          municipio: welcome.municipio,
+          ciudad: welcome.ciudad,
+          zona: welcome.zona,
+          cp: welcome.cp,
+          asentamiento: welcome.asentamiento,
+          tipo: welcome.tipo
+        );
 }
