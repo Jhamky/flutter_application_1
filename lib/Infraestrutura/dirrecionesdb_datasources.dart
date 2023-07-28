@@ -13,7 +13,6 @@ class DirrecionesdbDatabase extends Dirrecionesdbdomein {
     return datos;
   }
 
-  @override
   void initState() {
     listadirreciones();
   }
