@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/domain/entities/entities_lugares.dart';
+import 'package:flutter_application_1/presentacion/shared/customNavagationBar.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   static const name = 'homescreen';
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  int selectState = 0;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text('Appbar'),
-      ),
       body: Center(
-        child: FutureBuilder(
-          future: listadirreciones(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
-            }
-            if (snapshot.hasError) {
-              return const Text('esta mal');
-            } else {
-              return const Text('esta bien');
-            }
+        child: TextButton(
+          child: const Text('Vamos a la otra pantalla'),
+          onPressed: () {
+            context.push('/favoriteview');
           },
         ),
       ),

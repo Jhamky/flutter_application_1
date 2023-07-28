@@ -5,12 +5,20 @@ class CustonAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       bottom: false,
       child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
             width: double.infinity,
+            child: Row(
+              children: const [
+                Icon(
+                  Icons.place_outlined,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
           )),
     );
   }
