@@ -1,4 +1,5 @@
-import 'package:flutter_application_1/presentacion/screens/favorite.dart';
+import 'package:flutter_application_1/presentacion/screens/create_grup.dart';
+import 'package:flutter_application_1/presentacion/screens/direcciones.dart';
 import 'package:flutter_application_1/presentacion/screens/home_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,9 +12,14 @@ final appRouter = GoRouter(
       builder: (context, state) => const HomeView(),
     ),
     GoRoute(
-      path: '/favoriteview',
-      name: FavoriteView.name,
-      builder: (context, state) => const FavoriteView(),
+      path: '/CreateGRUP',
+      name: CreateGRUP.name,
+      builder: (context, state) => const CreateGRUP(),
+    ),
+    GoRoute(
+      path: '/dirreciones',
+      name: DirrecionesScreen.name,
+      builder: (context, state) => const DirrecionesScreen(),
     ),
   ],
 );
