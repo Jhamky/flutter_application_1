@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentacion/models/Isardc.dart';
+import 'package:go_router/go_router.dart';
 
 //import 'package:flutter_application_1/database/service_Isar.dart';
 //import 'package:go_router/go_router.dart';
@@ -95,18 +97,22 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        //if (formKey.currentState!.validate()) {
-                        //Map<String, dynamic> info = {
-                        //'Nombre': nombrefm,
-                        //'Calle': callefm,
-                        //'Codigo Postal': codigopostalfm,
-                        //'Estado': estadofm,
-                        //'Municipio': minicipiofm,
-                        //'Asentamiento': asentamientofm,
-                        //'Adicional': adicionalfm
-                        print('hola');
+                        if (formKey.currentState!.validate()) {
+                          widget.service.savedicc(
+                            Isardc()..name = nombrefm.text,
+                          );
+                          // Map<String, dynamic> info = {
+                          //   'Nombre': nombrefm,
+                          //   'Calle': callefm,
+                          //   'Codigo Postal': codigopostalfm,
+                          //   'Estado': estadofm,
+                          //   'Municipio': minicipiofm,
+                          //   'Asentamiento': asentamientofm,
+                          //   'Adicional': adicionalfm
+                          //};
+                          context.push('/');
+                        }
                       },
-                      //},
                       child: const Text('Guardar')),
                 ],
               )),
