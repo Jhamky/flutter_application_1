@@ -14,7 +14,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/CreateGRUP',
       name: DirrecionesNew.name,
-      builder: (context, state) => const DirrecionesNew(),
+      builder: (context, state) => DirrecionesNew(),
     ),
     GoRoute(
       path: '/dirreciones',

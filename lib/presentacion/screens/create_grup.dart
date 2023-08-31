@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/presentacion/models/Isardc.dart';
+// import 'package:flutter_application_1/database/service_Isar.dart';
+// import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 import 'package:go_router/go_router.dart';
 
 //import 'package:flutter_application_1/database/service_Isar.dart';
 //import 'package:go_router/go_router.dart';
 
 class DirrecionesNew extends StatefulWidget {
+  //final IsarService service;
   static const name = 'CreateGRUP';
-  const DirrecionesNew({Key? key}) : super(key: key);
+  const DirrecionesNew({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DirrecionesNew> createState() => _DirrecionesNewState();
@@ -98,9 +102,9 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                   ElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          widget.service.savedicc(
-                            Isardc()..name = nombrefm.text,
-                          );
+                          // widget.service.saveDicc(
+                          //   Isardc()..name = nombrefm.text,
+                          // );
                           // Map<String, dynamic> info = {
                           //   'Nombre': nombrefm,
                           //   'Calle': callefm,
@@ -110,7 +114,7 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                           //   'Asentamiento': asentamientofm,
                           //   'Adicional': adicionalfm
                           //};
-                          context.push('/');
+                          context.go('/');
                         }
                       },
                       child: const Text('Guardar')),
