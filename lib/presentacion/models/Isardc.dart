@@ -1,5 +1,4 @@
 import 'package:isar/isar.dart';
-//import 'package:flutter_application_1/presentacion/screens/create_grup.dart';
 part 'Isardc.g.dart';
 
 @collection

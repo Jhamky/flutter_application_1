@@ -1,15 +1,32 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/database/service_Isar.dart';
+import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 // import 'package:flutter_application_1/database/service_Isar.dart';
 // import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 import 'package:go_router/go_router.dart';
 
-//import 'package:flutter_application_1/database/service_Isar.dart';
-//import 'package:go_router/go_router.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await IsarHelper.instance.init();
+  runApp(DirrecionesNew());
+}
 
 class DirrecionesNew extends StatefulWidget {
   //final IsarService service;
+  final dao = Isardcdao();
+
+  final nombrefm = TextEditingController();
+  final callefm = TextEditingController();
+  final codigopostalfm = TextEditingController();
+  final estadofm = TextEditingController();
+  final minicipiofm = TextEditingController();
+  final asentamientofm = TextEditingController();
+  final adicionalfm = TextEditingController();
+
   static const name = 'CreateGRUP';
-  const DirrecionesNew({
+  DirrecionesNew({
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +46,12 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //final IsarService = IsarService();
+
+  @override
+  void dispose() {
+    nombrefm.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,23 +123,29 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                     ),
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          // widget.service.saveDicc(
-                          //   Isardc()..name = nombrefm.text,
-                          // );
-                          // Map<String, dynamic> info = {
-                          //   'Nombre': nombrefm,
-                          //   'Calle': callefm,
-                          //   'Codigo Postal': codigopostalfm,
-                          //   'Estado': estadofm,
-                          //   'Municipio': minicipiofm,
-                          //   'Asentamiento': asentamientofm,
-                          //   'Adicional': adicionalfm
-                          //};
-                          context.go('/');
-                        }
+                      onPressed: () async {
+                        Isardc user = Isardc()..name = nombrefm.text;
+                        final id = await dao.upsert(user);
+                        user.id = id;
+                        nombrefm.clear();
+
+                        //if (formKey.currentState!.validate()) {
+
+                        // widget.service.saveDicc(
+                        //   Isardc()..name = nombrefm.text,
+                        // );
+                        // Map<String, dynamic> info = {
+                        //   'Nombre': nombrefm,
+                        //   'Calle': callefm,
+                        //   'Codigo Postal': codigopostalfm,
+                        //   'Estado': estadofm,
+                        //   'Municipio': minicipiofm,
+                        //   'Asentamiento': asentamientofm,
+                        //   'Adicional': adicionalfm
+                        //};
+                        context.go('/');
                       },
+                      //},
                       child: const Text('Guardar')),
                 ],
               )),
