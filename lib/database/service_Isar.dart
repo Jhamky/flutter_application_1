@@ -34,6 +34,8 @@ class IsarHelper {
 
   static Isar? _isarDb;
 
+  Isar get isar => _isarDb!;
+
   Future<void> init() async {
     if (_isarDb != null) {
       return;

@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/database/isardc.dart';
 import 'package:flutter_application_1/database/service_Isar.dart';
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 // import 'package:flutter_application_1/database/service_Isar.dart';
@@ -35,6 +34,7 @@ class DirrecionesNew extends StatefulWidget {
 }
 
 class _DirrecionesNewState extends State<DirrecionesNew> {
+  final dao = Isardcdao();
   TextEditingController nombrefm = TextEditingController();
   TextEditingController callefm = TextEditingController();
   TextEditingController codigopostalfm = TextEditingController();
@@ -143,6 +143,7 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                         //   'Asentamiento': asentamientofm,
                         //   'Adicional': adicionalfm
                         //};
+                        // ignore: use_build_context_synchronously
                         context.go('/');
                       },
                       //},

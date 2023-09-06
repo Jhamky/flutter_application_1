@@ -1,4 +1,4 @@
-// import 'package:isar/isar.dart';
+//import 'package:isar/isar.dart';
 // import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 
 // class IsardcServi{
@@ -28,9 +28,10 @@
 
 import 'package:flutter_application_1/database/service_Isar.dart';
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
+import 'package:isar/isar.dart';
 
 class Isardcdao {
-  final isar = IsarHelper.instance.isar();
+  final isar = IsarHelper.instance.isar;
 
   Future<List<Isardc>> getAll() async {
     return isar.isardcs.where().findAll();
