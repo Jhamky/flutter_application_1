@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database/isardc.dart';
-import 'package:flutter_application_1/database/service_Isar.dart';
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
-// import 'package:flutter_application_1/database/service_Isar.dart';
-// import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 import 'package:go_router/go_router.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await IsarHelper.instance.init();
-  runApp(DirrecionesNew());
-}
 
 class DirrecionesNew extends StatefulWidget {
   //final IsarService service;
@@ -46,12 +37,6 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //final IsarService = IsarService();
-
-  @override
-  void dispose() {
-    nombrefm.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
