@@ -26,22 +26,23 @@
 //   }
 // }
 
-import 'package:flutter_application_1/database/service_Isar.dart';
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
-import 'package:isar/isar.dart';
+// import 'package:flutter_application_1/database/service_Isar.dart';
+// import 'package:isar/isar.dart';
 
 class Isardcdao {
-  final isar = IsarHelper.instance.isar;
-
   Future<List<Isardc>> getAll() async {
+    final isar = await db;
     return isar.isardcs.where().findAll();
   }
 
   Future<bool> deleteOne(Isardc isardc) async {
+    final isar = await db;
     return isar.writeTxn(() => isar.isardcs.delete(isardc.id));
   }
 
   Future<int> upsert(Isardc isardc) async {
+    final isar = await db;
     return isar.writeTxn(() => isar.isardcs.put(isardc));
   }
 }
