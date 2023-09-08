@@ -28,9 +28,23 @@
 
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
 // import 'package:flutter_application_1/database/service_Isar.dart';
-// import 'package:isar/isar.dart';
+import 'package:isar/isar.dart';
 
 class Isardcdao {
+  late Future<Isar> db;
+
+  Isardcdao() {
+    db = openDB();
+  }
+
+  Future<Isar> openDB() async {
+    if (Isar.instanceNames.isEmpty) {
+      return await Isar.open([IsardcSchema], directory: '', inspector: true);
+    }
+
+    return Future.value(Isar.getInstance());
+  }
+
   Future<List<Isardc>> getAll() async {
     final isar = await db;
     return isar.isardcs.where().findAll();
@@ -38,11 +52,11 @@ class Isardcdao {
 
   Future<bool> deleteOne(Isardc isardc) async {
     final isar = await db;
-    return isar.writeTxn(() => isar.isardcs.delete(isardc.id));
+    return isar.writeTxnSync(() => isar.isardcs.deleteSync(isardc.id));
   }
 
   Future<int> upsert(Isardc isardc) async {
     final isar = await db;
-    return isar.writeTxn(() => isar.isardcs.put(isardc));
+    return isar.writeTxnSync(() => isar.isardcs.putSync(isardc));
   }
 }

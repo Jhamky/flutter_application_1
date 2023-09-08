@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/database/isardc.dart';
+import 'package:flutter_application_1/presentacion/models/Isardc.dart';
+import 'package:flutter_application_1/presentacion/screens/direcciones.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeView extends StatefulWidget {
@@ -10,6 +13,19 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final dao = Isardcdao();
+  List<Isardc> id = [];
+
+  @override
+  void initState() {
+    super.initState();
+    dao.getAll().then((value) {
+      setState(() {
+        id = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
                 return _item();
               },
               separatorBuilder: (context, index) => const Divider(),
-              itemCount: 5,
+              itemCount: id.length,
             ),
           )
         ],
@@ -46,14 +62,14 @@ class _HomeViewState extends State<HomeView> {
 
   Widget _item() {
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => const TeacherDetailScreen(),
-      //     ),
-      //   );
-      // },
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DirrecionesScreen(),
+          ),
+        );
+      },
       child: Container(
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
@@ -79,7 +95,7 @@ class _HomeViewState extends State<HomeView> {
                     style: TextStyle(color: Theme.of(context).primaryColor),
                     children: const [
                       TextSpan(
-                        text: '89779',
+                        text: '',
                         style: TextStyle(
                           color: Colors.grey,
                         ),
@@ -90,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
                 const SizedBox(height: 10.0),
                 RichText(
                   text: TextSpan(
-                    text: 'Nombre: Casa en Italia',
+                    text: 'Nombre: ',
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 20.0,
