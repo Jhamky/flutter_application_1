@@ -106,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
                 const SizedBox(height: 10.0),
                 RichText(
                   text: TextSpan(
-                    text: 'Nombre: ',
+                    text: 'Nombre: ${dao}',
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 20.0,

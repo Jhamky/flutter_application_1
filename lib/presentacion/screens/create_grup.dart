@@ -107,32 +107,20 @@ class _DirrecionesNewState extends State<DirrecionesNew> {
                       labelText: 'Adicional:',
                     ),
                   ),
-                  ElevatedButton(
-                      onPressed: () async {
-                        Isardc user = Isardc()..name = nombrefm.text;
-                        final id = await dao.upsert(user);
-                        user.id = id;
-                        nombrefm.clear();
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          Isardc user = Isardc()..name = nombrefm.text;
+                          final id = await dao.upsert(user);
+                          user.id = id;
+                          nombrefm.clear();
 
-                        //if (formKey.currentState!.validate()) {
-
-                        // widget.service.saveDicc(
-                        //   Isardc()..name = nombrefm.text,
-                        // );
-                        // Map<String, dynamic> info = {
-                        //   'Nombre': nombrefm,
-                        //   'Calle': callefm,
-                        //   'Codigo Postal': codigopostalfm,
-                        //   'Estado': estadofm,
-                        //   'Municipio': minicipiofm,
-                        //   'Asentamiento': asentamientofm,
-                        //   'Adicional': adicionalfm
-                        //};
-                        // ignore: use_build_context_synchronously
-                        context.go('/');
-                      },
-                      //},
-                      child: const Text('Guardar')),
+                          context.go('/');
+                        },
+                        //},
+                        child: const Text('Guardar')),
+                  ),
                 ],
               )),
         ),
