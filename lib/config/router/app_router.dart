@@ -9,7 +9,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/',
       name: HomeView.name,
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => HomeView(),
     ),
     GoRoute(
       path: '/CreateGRUP',

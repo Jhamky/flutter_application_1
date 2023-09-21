@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/database/isardc.dart';
 import 'package:flutter_application_1/presentacion/models/Isardc.dart';
+import 'package:flutter_application_1/presentacion/screens/create_grup.dart';
 import 'package:flutter_application_1/presentacion/screens/direcciones.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeView extends StatefulWidget {
   static const name = '/';
-  const HomeView({super.key});
+  final direcciones = DirrecionesNew();
+  HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -14,17 +16,10 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final dao = Isardcdao();
+  final direcciones = DirrecionesNew(
+    key: GlobalKey,
+  );
   List<Isardc> id = [];
-
-  @override
-  void initState() {
-    super.initState();
-    dao.getAll().then((value) {
-      setState(() {
-        id = value;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +86,7 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 RichText(
                   text: TextSpan(
-                    text: 'Codigo Postal: ',
+                    text: 'Codigo Postal: ${direcciones.codigopostalfm}',
                     style: TextStyle(color: Theme.of(context).primaryColor),
                     children: const [
                       TextSpan(
@@ -106,7 +101,7 @@ class _HomeViewState extends State<HomeView> {
                 const SizedBox(height: 10.0),
                 RichText(
                   text: TextSpan(
-                    text: 'Nombre: ${dao}',
+                    text: 'Nombre: ${direcciones.nombrefm}',
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontSize: 20.0,
